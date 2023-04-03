@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors")
 const connect =  require('./src/config/db')
+require("dotenv").config()
 const createsuperadmin = require('./src/routes/CreateSuperAdmin')
 const createadmin  = require('./src/routes/CreateAdmin')
 const createuser  = require('./src/routes/CreateUser')
@@ -35,11 +36,11 @@ app.use("/api/profile", profile);
 
 
 
-app.listen(5000, async()=>{
+app.listen(process.env.PORT, async()=>{
 
     try{
         await connect();
-        console.log("Listening on port 5000...");
+        console.log("Listening on port...");
     }
     catch(e){
         console.log(e.message);
